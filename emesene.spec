@@ -1,7 +1,7 @@
 %define name emesene
 %define version 0
-%define snapshot 230507
-%define date 20070523
+%define snapshot 030707
+%define date 20070703
 %define release %mkrel 0.%date.1
 
 Summary: OS independent MSN Messenger client
