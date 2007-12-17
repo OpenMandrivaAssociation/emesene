@@ -12,7 +12,6 @@ Source0: http://downloads.sourceforge.net/emesene/%{name}-%{snapshot}.tar.gz
 License: GPL
 Group: Networking/Instant messaging
 Url: http://emesene-msn.blogspot.com/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
 Requires: python pygtk2.0
 Requires: dbus-python
