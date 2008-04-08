@@ -1,14 +1,12 @@
 %define name emesene
-%define version 0
-%define snapshot r999
-%define date 20071202
-%define release %mkrel 0.%date.1
+%define version 1.0
+%define release %mkrel 1
 
 Summary: OS independent MSN Messenger client
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://downloads.sourceforge.net/emesene/%{name}-%{snapshot}.tar.gz
+Source0: http://downloads.sourceforge.net/emesene/%{name}-%{version}.tar.gz
 License: GPL
 Group: Networking/Instant messaging
 Url: http://emesene-msn.blogspot.com/
@@ -44,9 +42,8 @@ picture.
 %install
 rm -rf $RPM_BUILD_ROOT
 mkdir -p %buildroot%_datadir/
-cp -r ../%name %buildroot%_datadir/
-rm -rf %buildroot%_datadir/%name/docs \
-      %buildroot%_datadir/%name/COPYING \
+cp -r ../%name %buildroot%_datadir/%name
+rm -rf %buildroot%_datadir/%name/COPYING \
       %buildroot%_datadir/%name/emesene.bat \
       %buildroot%_datadir/%name/plugins_base/Winamp.py      
 
@@ -75,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%doc COPYING docs/*
+%doc COPYING README
 %attr(755,root,root) %_bindir/%name
 %_datadir/%name
 %_datadir/applications/mandriva-%name.desktop
