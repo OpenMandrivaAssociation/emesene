@@ -1,6 +1,6 @@
 %define name emesene
 %define version 1.0.1
-%define release %mkrel 2
+%define release %mkrel 3
 
 Summary: OS independent MSN Messenger client
 Name: %{name}
@@ -12,14 +12,14 @@ Group: Networking/Instant messaging
 Url: http://emesene-msn.blogspot.com/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
-Requires: python pygtk2.0
+Requires: python
+Requires: pygtk2.0
 Requires: dbus-python
 # gw for aplay
 Requires: alsa-utils
 # gw for egg.trayicon
 Requires: gnome-python-extras
 Requires: python-notify
-Requires: pygtk2.0
 
 %description
 Emesene is an OS independent MSN Messenger client writed in python and
