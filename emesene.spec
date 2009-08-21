@@ -1,6 +1,6 @@
 %define name emesene
 %define version 1.5
-%define release %mkrel 3
+%define release %mkrel 4
 
 Summary: OS independent MSN Messenger client
 Name: %{name}
@@ -21,10 +21,10 @@ Requires: alsa-utils
 # gw for egg.trayicon
 Requires: gnome-python-extras
 #gw spell checker:
-Requires: gnome-python-gtkspell
+Suggests: gnome-python-gtkspell
 #gw for wink animations:
-Requires: cabextract
-Requires: python-notify
+Suggests: cabextract gnash
+Suggests: python-notify
 
 %description
 Emesene is an OS independent MSN Messenger client writed in python and
