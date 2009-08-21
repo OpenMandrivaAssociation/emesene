@@ -13,6 +13,7 @@ Url: http://emesene-msn.blogspot.com/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
 #gw does not build, it needs mimic-private.h and py_mimic.h
+#http://redmine.emesene.org/issues/show/61
 #BuildRequires: libmimic-devel
 Requires: python
 Requires: pygtk2.0
