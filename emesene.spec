@@ -1,6 +1,6 @@
 %define name emesene
 %define version 1.5
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: OS independent MSN Messenger client
 Name: %{name}
@@ -12,6 +12,8 @@ Group: Networking/Instant messaging
 Url: http://emesene-msn.blogspot.com/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
+#gw does not build, it needs mimic-private.h and py_mimic.h
+#BuildRequires: libmimic-devel
 Requires: python
 Requires: pygtk2.0
 Requires: dbus-python
@@ -19,6 +21,10 @@ Requires: dbus-python
 Requires: alsa-utils
 # gw for egg.trayicon
 Requires: gnome-python-extras
+#gw spell checker:
+Requires: gnome-python-gtkspell
+#gw for wink animations:
+Requires: cabextract
 Requires: python-notify
 
 %description
@@ -39,6 +45,7 @@ picture.
 %setup -q
 
 %build
+#python setup.py build_ext -i
 
 %install
 rm -rf $RPM_BUILD_ROOT
