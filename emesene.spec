@@ -1,6 +1,6 @@
 %define name emesene
-%define version 1.5
-%define release %mkrel 4
+%define version 1.5.1
+%define release %mkrel 1
 
 Summary: OS independent MSN Messenger client
 Name: %{name}
@@ -59,7 +59,7 @@ install -D -m 644 misc/%name.desktop %buildroot%_datadir/applications/%name.desk
 mkdir -p %buildroot%_libdir/
 cp -r ../%name-%version %buildroot%_libdir/%name
 cd %buildroot%_libdir/%name
-rm -rf COPYING README GPL LGPL emesene.bat Winamp.py misc/%name.desktop misc/%name.1 libmimic build setup.py po/templates/ %name.pot PKG-INFO PSF debug*.list
+rm -rf COPYING README GPL LGPL emesene.bat Winamp.py misc/%name.desktop misc/%name.1 libmimic build setup.py po/templates/ %name.pot PKG-INFO PSF debug*.list MANIFEST.in
 cd po
 for dir in *;do echo "%lang($dir) %_libdir/%name/po/$dir" >> $RPM_BUILD_DIR/%name-%version/%name.lang
 done
@@ -97,11 +97,14 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/%name/*.png
 %_libdir/%name/abstract
 %_libdir/%name/conversation_themes
+%doc %_libdir/%name/docs/
 %_libdir/%name/emesenelib
 %_libdir/%name/hotmlog.htm
 %_libdir/%name/libmimic.so
 %_libdir/%name/misc
 %_libdir/%name/plugins_base
+%_libdir/%name/pygif/
+%_libdir/%name/pyisf/
 %_libdir/%name/smilies
 %_libdir/%name/sound_themes
 %_libdir/%name/themes
