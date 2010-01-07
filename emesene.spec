@@ -1,5 +1,5 @@
 %define name emesene
-%define version 1.5.1
+%define version 1.6
 %define release %mkrel 1
 
 Summary: OS independent MSN Messenger client
@@ -97,14 +97,11 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/%name/*.png
 %_libdir/%name/abstract
 %_libdir/%name/conversation_themes
-%doc %_libdir/%name/docs/
 %_libdir/%name/emesenelib
 %_libdir/%name/hotmlog.htm
 %_libdir/%name/libmimic.so
 %_libdir/%name/misc
 %_libdir/%name/plugins_base
-%_libdir/%name/pygif/
-%_libdir/%name/pyisf/
 %_libdir/%name/smilies
 %_libdir/%name/sound_themes
 %_libdir/%name/themes
