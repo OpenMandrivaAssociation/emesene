@@ -1,6 +1,6 @@
 %define name emesene
 %define version 1.6.3
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: OS independent MSN Messenger client
 Name: %{name}
