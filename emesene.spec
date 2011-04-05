@@ -8,6 +8,7 @@ Version: %{version}
 Release: %{release}
 Source0: http://downloads.sourceforge.net/emesene/%{name}-%{version}.tar.gz
 Patch: emesene-1.5-desktopentry.patch
+Patch1: emesene-1.6.3-link.patch
 License: GPLv2+ and LGPLv2+
 Group: Networking/Instant messaging
 Url: http://emesene-msn.blogspot.com/
@@ -43,6 +44,7 @@ picture.
 %prep
 %setup -q
 %patch -p2
+%patch1 -p0
 find -name \*~ |xargs rm -fv
 
 %build
