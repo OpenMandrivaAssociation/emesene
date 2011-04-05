@@ -1,6 +1,6 @@
 %define name emesene
 %define version 1.6.3
-%define release %mkrel 2
+%define release %mkrel 3
 
 Summary: OS independent MSN Messenger client
 Name: %{name}
@@ -53,7 +53,7 @@ rm -rf $RPM_BUILD_ROOT %name.lang
 
 install -D -m 644 misc/%name.1 %buildroot%_mandir/man1/%name.1
 install -D -m 644 misc/%name.png %buildroot%_datadir/icons/hicolor/48x48/apps/%name.png
-install -D -m 644 misc/%name.svg %buildroot%_datadir/icons/hicolor/scalable/apps/%name.png
+install -D -m 644 misc/%name.svg %buildroot%_datadir/icons/hicolor/scalable/apps/%name.svg
 install -D -m 644 misc/%name.desktop %buildroot%_datadir/applications/%name.desktop
 
 mkdir -p %buildroot%_libdir/
@@ -90,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README COPYING 
 %attr(755,root,root) %_bindir/%name
 %_mandir/man1/%name.1*
-%_datadir/icons/hicolor/*/apps/%name.png
+%_datadir/icons/hicolor/*/apps/%name.*
 %dir %_libdir/%name
 %doc %_libdir/%name/docs
 %_libdir/%name/%name
