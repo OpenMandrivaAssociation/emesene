@@ -63,7 +63,7 @@ cp -r ../%name-%version %buildroot%_libdir/%name
 cd %buildroot%_libdir/%name
 rm -rf COPYING README GPL LGPL emesene.bat Winamp.py misc/%name.desktop misc/%name.1 libmimic build setup.py po/templates/ %name.pot PKG-INFO PSF debug*.list MANIFEST.in
 cd po
-for dir in *;do echo "%lang($dir) %_libdir/%name/po/$dir" >> $RPM_BUILD_DIR/%name-%version/%name.lang
+for dir in *;do echo "%lang($dir) %_libdir/%name/po/$dir" >> %{_builddir}/%name-%version/%name.lang
 done
 
 
