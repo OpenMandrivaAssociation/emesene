@@ -1,39 +1,44 @@
-%define name emesene
-%define version 1.6.3
-%define release %mkrel 3
+%define 	name 	emesene
+%define 	version 2.12.3
+%define 	release %mkrel 1
 
-Summary: OS independent MSN Messenger client
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: http://downloads.sourceforge.net/emesene/%{name}-%{version}.tar.gz
-Patch: emesene-1.5-desktopentry.patch
-Patch1: emesene-1.6.3-link.patch
-License: GPLv2+ and LGPLv2+
-Group: Networking/Instant messaging
-Url: http://emesene-msn.blogspot.com/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: python-devel
-Requires: python
-Requires: pygtk2.0
-Requires: dbus-python
-# gw for aplay
-Requires: alsa-utils
-# gw for egg.trayicon
-Requires: gnome-python-extras
-#gw spell checker:
-Suggests: gnome-python-gtkspell
-#gw for wink animations:
-Suggests: cabextract gnash
-Suggests: python-notify
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Summary:	IM client for the Windows Live Messenger network and others
+URL:		http://blog.emesene.org/
+License:	Python Software Foundation License and GPLv3 and LGPLv3
+Group:		Networking/Instant messaging
+# Official tar.gz cleaned: 
+#1. remove 'dlls' directory
+#2. remove 'emesene/e3/papylib/papyon'
+Source0:	%{name}-%{version}-0.tar.gz
+Patch0:		emesene-2.12.3-desktop.patch
+BuildArch:	noarch
+
+Requires:	python >= 2.5
+Requires:	python-dnspython
+Requires:	pylint
+Requires:	python-OpenSSL
+Requires:	python-imaging
+Requires:	dbus-python
+Requires:	gnome-python-gtkspell
+
+Requires:	%{name}-gui = %{version}-%{release}
+
+Suggests:	python-webkitgtk
+Suggests:	python-xmpp
+Suggests:	python-papyon >= 0.5.5
+Suggests: 	python-notify
+
+Provides:       emesene2 = %{version}-%{release}
 
 %description
-Emesene is an OS independent MSN Messenger client writed in python and
-GTK. The main idea is to make a client similar to the official MSN
+Emesene is an OS independent Windows Live Messenger client writed in python and
+GTK. The main idea is to make a client similar to the official Windows Live
 Messenger client but kepping it simple and with a nice GUI.
-
  
-Emesene is a python/gtk MSN messenger clone, it uses msnlib (MSNP9)
+Emesene is a python/GTK MSN messenger clone, it uses msnlib (MSNP9)
 and try to be a nice looking and simple MSN client.
 
 You can login, send formated messages, smilies, use autoreply, change
@@ -41,76 +46,84 @@ status, change nick, send nudges and all the stuff you can do in a
 normal MSN client except, file transfers,custom emoticons and display
 picture.
 
+%package	gtk2
+Summary:        emesene GTK interface for emesene client
+Group:          Networking/Instant messaging
+Provides:       emesene-gui = %{version}-%{release}
+Requires:       pygtk2.0 >= 2.12
+Requires:       %{name} = %{version}-%{release}
+
+%description	gtk2
+This contains the GTK interface for emesene.
+
+%package	qt4
+Summary:        emesene Qt4 interface for emesene client
+Group:          Networking/Instant messaging
+Provides:       emesene-gui = %{version}-%{release}
+Requires:	python-qt4 >= 4.6
+Requires:       %{name} = %{version}-%{release}
+
+%description	qt4
+This contains the Qt4 interface for emesene.
+
 %prep
-%setup -q
-%patch -p2
-%patch1 -p0
+%setup -q -n %{name}
+%patch0 -p0
+
 find -name \*~ |xargs rm -fv
 
 %build
-python setup.py build_ext -i
+python setup.py build_ext -ilm
 
 %install
 rm -rf $RPM_BUILD_ROOT %name.lang
 
-install -D -m 644 misc/%name.1 %buildroot%_mandir/man1/%name.1
-install -D -m 644 misc/%name.png %buildroot%_datadir/icons/hicolor/48x48/apps/%name.png
-install -D -m 644 misc/%name.svg %buildroot%_datadir/icons/hicolor/scalable/apps/%name.svg
-install -D -m 644 misc/%name.desktop %buildroot%_datadir/applications/%name.desktop
+install -D -m 644 docs/man/%name.1 %buildroot%_mandir/man1/%name.1
+install -D -m 644 %name/data/pixmaps/%name.png %buildroot%_datadir/icons/hicolor/48x48/apps/%name.png
+install -D -m 644 %name/data/icons/hicolor/scalable/apps/%name.svg %buildroot%_datadir/icons/hicolor/scalable/apps/%name.svg
+install -D -m 644 %name/data/share/applications/emesene.desktop %buildroot%_datadir/applications/%name.desktop
 
-mkdir -p %buildroot%_libdir/
-cp -r ../%name-%version %buildroot%_libdir/%name
-cd %buildroot%_libdir/%name
-rm -rf COPYING README GPL LGPL emesene.bat Winamp.py misc/%name.desktop misc/%name.1 libmimic build setup.py po/templates/ %name.pot PKG-INFO PSF debug*.list MANIFEST.in
-cd po
-for dir in *;do echo "%lang($dir) %_libdir/%name/po/$dir" >> %{_builddir}/%name-%version/%name.lang
-done
+cd %{name}
 
+sed -i '/import e3dummy/d' emesene.py
 
+# Copying files
+mkdir -p %buildroot%_datadir/%{name}
+cp -r * %buildroot%_datadir/%{name}
 
+cd %buildroot%_datadir/%name
 
+#delete Unity file
+find . -type f -name UnityLauncher.py -exec rm -rf '{}' +
+find . -type f -name .gitignore -exec rm -rf '{}' +
+rm -rf debug*.list MANIFEST.in *.nsi *WINDOWS.txt *.translations setup.py *.developers %name.pot
+find . -type f -name extension.py -exec chmod 755 '{}' +
+find . -type f -name plugin_base.py -exec chmod 755 '{}' +
+find . -type f -name e3_example.py -exec chmod 755 '{}' +
+find . -type f -name emesene.py -exec chmod 755 '{}' +
+find . -type f -name debugger.py -exec chmod 755 '{}' +
+find . -type f -name SingleInstance.py -exec chmod 755 '{}' +
+find . -type f -name pluginmanager.py -exec chmod 755 '{}' +
 
 mkdir -p %buildroot%_bindir/
 cat > %buildroot%_bindir/%name << EOF
 #!/bin/sh
-cd %_libdir/%name
+cd %_datadir/%name
 exec ./%name
 EOF
 
-%if %mdkversion < 200900
-%post
-%update_icon_cache hicolor
-%postun
-%clean_icon_cache hicolor
-%endif
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%files -f %name.lang
-%defattr(-,root,root)
-%doc README COPYING 
+%files
+%doc COPYING GPL LGPL
 %attr(755,root,root) %_bindir/%name
-%_mandir/man1/%name.1*
+%_datadir/%name/
+%exclude %_datadir/%name/gui/gtkui
+%exclude %_datadir/%name/gui/qt4ui
 %_datadir/icons/hicolor/*/apps/%name.*
-%dir %_libdir/%name
-%doc %_libdir/%name/docs
-%_libdir/%name/%name
-%_libdir/%name/*.py
-%_libdir/%name/*.png
-%_libdir/%name/abstract
-%_libdir/%name/conversation_themes
-%_libdir/%name/emesenelib
-%_libdir/%name/hotmlog.htm
-%_libdir/%name/libmimic.so
-%_libdir/%name/misc
-%_libdir/%name/plugins_base
-%_libdir/%name/pygif
-%_libdir/%name/pyisf
-%_libdir/%name/smilies
-%_libdir/%name/sound_themes
-%_libdir/%name/themes
-%dir %_libdir/%name/po
 %_datadir/applications/%name.desktop
+%_mandir/man1/%name.1*
 
+%files gtk2
+%_datadir/%name/gui/gtkui
 
+%files qt4
+%_datadir/%name/gui/qt4ui
