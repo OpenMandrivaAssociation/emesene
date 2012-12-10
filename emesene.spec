@@ -127,3 +127,108 @@ EOF
 
 %files qt4
 %_datadir/%name/gui/qt4ui
+
+
+%changelog
+* Mon Jun 04 2012 Alexander Khrukin <akhrukin@mandriva.org> 2.12.3-1mdv2012.0
++ Revision: 802339
+- version update 2.12.3
+
+* Tue Apr 05 2011 Funda Wang <fwang@mandriva.org> 1.6.3-3
++ Revision: 650511
+- fix linkage
+
+  + Götz Waschk <waschk@mandriva.org>
+    - fix icon extension on the scalable icon
+
+* Wed Nov 03 2010 Götz Waschk <waschk@mandriva.org> 1.6.3-2mdv2011.0
++ Revision: 593002
+- rebuild for new python 2.7
+
+* Mon Jul 19 2010 Götz Waschk <waschk@mandriva.org> 1.6.3-1mdv2011.0
++ Revision: 554910
+- new version
+
+* Thu Jun 24 2010 Luis Medinas <lmedinas@mandriva.org> 1.6.2-1mdv2010.1
++ Revision: 549087
+-new version
+-Fixes a few critical bugs from the last version
+
+* Mon Apr 19 2010 Götz Waschk <waschk@mandriva.org> 1.6.1-1mdv2010.1
++ Revision: 536709
+- new version
+- update file list
+
+* Thu Jan 07 2010 Götz Waschk <waschk@mandriva.org> 1.6-1mdv2010.1
++ Revision: 487046
+- new version
+- update file list
+
+* Fri Nov 06 2009 Götz Waschk <waschk@mandriva.org> 1.5.1-1mdv2010.1
++ Revision: 460839
+- new version
+- update file list
+
+* Fri Aug 21 2009 Götz Waschk <waschk@mandriva.org> 1.5-4mdv2010.0
++ Revision: 418997
+- replace some requirements by suggestions
+- suggest gnash
+
+* Fri Aug 21 2009 Götz Waschk <waschk@mandriva.org> 1.5-3mdv2010.0
++ Revision: 418956
+- silent update of 1.5
+- enable mimic support
+- no more noarch
+- add man page
+- add icons to the default locations
+- use upstream desktop entry
+- many spec file fixes
+- add comment about libmimic
+
+* Fri Aug 21 2009 Götz Waschk <waschk@mandriva.org> 1.5-2mdv2010.0
++ Revision: 418882
+- update deps
+
+* Thu Aug 20 2009 Götz Waschk <waschk@mandriva.org> 1.5-1mdv2010.0
++ Revision: 418697
+- update to new version 1.5
+
+* Tue Sep 09 2008 Adam Williamson <awilliamson@mandriva.org> 1.0.1-3mdv2009.0
++ Revision: 283158
+- doh, it already required pygtk2. can people PLEASE stop using multiple
+  requires per line? it's utterly unreadable.
+
+* Tue Sep 09 2008 Adam Williamson <awilliamson@mandriva.org> 1.0.1-2mdv2009.0
++ Revision: 282890
+- requires pygtk2.0 (reported on forums by Simon Rogers)
+
+* Mon Jul 21 2008 Götz Waschk <waschk@mandriva.org> 1.0.1-1mdv2009.0
++ Revision: 239334
+- new version
+
+* Tue Apr 08 2008 Götz Waschk <waschk@mandriva.org> 1.0-1mdv2009.0
++ Revision: 192406
+- new version
+
+  + Olivier Blin <blino@mandriva.org>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Mon Dec 03 2007 Götz Waschk <waschk@mandriva.org> 0-0.20071202.1mdv2008.1
++ Revision: 114564
+- new version
+
+* Tue Aug 21 2007 Götz Waschk <waschk@mandriva.org> 0-0.20070821.1mdv2008.0
++ Revision: 68236
+- new snapshot r801
+
+* Tue Jul 03 2007 Götz Waschk <waschk@mandriva.org> 0-0.20070703.1mdv2008.0
++ Revision: 47631
+- new version
+
+* Thu May 24 2007 Götz Waschk <waschk@mandriva.org> 0-0.20070523.1mdv2008.0
++ Revision: 30608
+- new version
+
