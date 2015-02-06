@@ -1,6 +1,6 @@
 %define 	name 	emesene
 %define 	version 2.12.3
-%define 	release %mkrel 1
+%define release 2
 
 Name:		%{name}
 Version:	%{version}
