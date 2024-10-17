@@ -6,7 +6,7 @@ Name:		%{name}
 Version:	%{version}
 Release:	%{release}
 Summary:	IM client for the Windows Live Messenger network and others
-URL:		http://blog.emesene.org/
+URL:		https://blog.emesene.org/
 License:	Python Software Foundation License and GPLv3 and LGPLv3
 Group:		Networking/Instant messaging
 # Official tar.gz cleaned: 
